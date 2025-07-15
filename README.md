@@ -17,32 +17,31 @@ HabitHop is a productivity-focused web application designed to help users build 
 - **Version Control:** GitHub
 
 ##  Folder Structure
-HabitHop/
-├── client/ # React frontend
-│ ├── public/ # Public assets (badges, icons, etc.)
-│ ├── src/
-│ │ ├── api/ # API helper services (auth.js, habitService.js)
-│ │ ├── components/ # Reusable UI components (Navbar, Pet, StreakDisplay, etc.)
-│ │ ├── pages/ # Main app views (Dashboard, Habits, Rewards, etc.)
-│ │ ├── services/ # Business logic services (badgeService, moodService)
-│ │ ├── styles/ # Component-specific CSS
-│ │ ├── App.jsx # Main App component
-│ │ └── main.jsx # Entry point
-│ └── package.json
-│
-├── server/ # Node.js backend
-│ ├── config/ # Database configuration (db.js)
-│ ├── controllers/ # Request handlers (habitController, badgeController, etc.)
-│ ├── middleware/ # Authentication and other middleware
-│ ├── models/ # Database models (user, badge, etc.)
-│ ├── routes/ # API routes (authRoutes, habitRoutes, etc.)
-│ ├── utils/ # Utility functions (moodUtils, badgeUtils)
-│ ├── server.js # Backend entry point
-│ └── package.json
-│
-├── README.md # Project documentation
-└── .gitignore
-
+- HabitHop/
+- ├── client/ # React frontend
+- │ ├── public/ # Public assets (badges, icons, etc.)
+- │ ├── src/
+- │ │ ├── api/ # API helper services (auth.js, habitService.js)
+- │ │ ├── components/ # Reusable UI components (Navbar, Pet, StreakDisplay, etc.)
+- │ │ ├── pages/ # Main app views (Dashboard, Habits, Rewards, etc.)
+- │ │ ├── services/ # Business logic services (badgeService, moodService)
+- │ │ ├── styles/ # Component-specific CSS
+- │ │ ├── App.jsx # Main App component
+- │ │ └── main.jsx # Entry point
+- │ └── package.json
+- │
+- ├── server/ # Node.js backend
+- │ ├── config/ # Database configuration (db.js)
+- │ ├── controllers/ # Request handlers (habitController, badgeController, etc.)
+- │ ├── middleware/ # Authentication and other middleware
+- │ ├── models/ # Database models (user, badge, etc.)
+- │ ├── routes/ # API routes (authRoutes, habitRoutes, etc.)
+- │ ├── utils/ # Utility functions (moodUtils, badgeUtils)
+- │ ├── server.js # Backend entry point
+- │ └── package.json
+- │
+- ├── README.md # Project documentation
+- └── .gitignore
 
 
 ## Installation & Setup
@@ -68,5 +67,5 @@ cd HabitHop
 ### Access the Application
 - Open your browser and go to
 - http://localhost:5173
-- [!Note] : Port may vary depending on your setup.
+- [!Note] Port may vary depending on your setup.
 
