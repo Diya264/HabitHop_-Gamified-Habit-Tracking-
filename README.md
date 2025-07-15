@@ -67,5 +67,5 @@ cd HabitHop
 ### Access the Application
 - Open your browser and go to
 - http://localhost:5173
-- [!Note] Port may vary depending on your setup.
+> [!Note] Port may vary depending on your setup.
 
