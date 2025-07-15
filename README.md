@@ -74,6 +74,7 @@ cd HabitHop
 ## Screenshots
  ### Login page 
  <img width="1365" height="589" alt="image" src="https://github.com/user-attachments/assets/d7dbc75c-a13e-45ef-9299-fb5cbceed675" />
+ 
  ### Signup page (design is similar to the login page)
  
  ### Dashboard 
