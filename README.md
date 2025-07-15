@@ -56,6 +56,7 @@ cd HabitHop
 ###  Set up the backend
 - cd server
 - npm install
+- create an .env file to store your database credentials
 #### Start the backend
 - npm start
 
