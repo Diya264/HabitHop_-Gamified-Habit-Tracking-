@@ -1,0 +1,862 @@
+.pet-container {
+  display: flex;
+  justify-content: flex-start; /* Changed from center to flex-start */
+  align-items: flex-start; /* Changed from center to flex-start */
+  /* justify-content: center;
+  align-items: center; */
+  min-height: 100vh; /* Changed from height: 100vh */
+  /* height: 100vh; */
+  background-color: transparent;
+  font-family: Arial, sans-serif;
+  overflow-x: hidden; /* Only hide horizontal overflow */
+  overflow-y: auto; /* Allow vertical scrolling */
+  margin: 0;
+  padding: 0; /* 20px Add some padding */
+}
+
+
+.controls {
+  position:static;;
+  top:20px;
+  right: 0;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: nowrap;
+  justify-content: center;
+  z-index: 10;
+}
+
+button {
+  padding: 8px 12px;
+  background-color: #a2d2ff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+button:hover {
+  background-color: #bde0fe;
+  transform: scale(1.05);
+}
+
+.pet {
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  left: calc(50% - 110px); /* Center the pet */
+  top: calc(50% - 110px); /* Center the pet */
+  z-index: 1;
+}
+
+.body {
+  position: absolute;
+  width: 140px;
+  height: 100px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  bottom: 20px;
+  left: 35px;
+  z-index: 1;
+}
+
+.head {
+  position: absolute;
+  width: 120px;
+  height: 110px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 50%;
+  bottom: 80px;
+  left: 45px;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.ear-left, .ear-right {
+  position: absolute;
+  width: 45px;
+  height: 90px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  z-index: 1;
+  transition: transform 0.5s ease;
+}
+
+.ear-left {
+  border-radius: 70% 30% 0 40%;
+  transform: rotate(-10deg);
+  bottom: 140px;
+  left: 30px;
+}
+
+.ear-right {
+  border-radius: 30% 70% 40% 0;
+  transform: rotate(10deg);
+  bottom: 140px;
+  right: 30px;
+}
+
+.inner-ear-left, .inner-ear-right {
+  position: absolute;
+  width: 25px;
+  height: 50px;
+  background-color: #ffcfd2;
+  border-radius: 50%;
+  opacity: 0.5;
+  z-index: 2;
+  transition: transform 0.5s ease;
+}
+
+.inner-ear-left {
+  transform: rotate(-10deg);
+  bottom: 160px;
+  left: 40px;
+}
+
+.inner-ear-right {
+  transform: rotate(10deg);
+  bottom: 160px;
+  right: 40px;
+}
+
+.eye-left, .eye-right {
+  position: absolute;
+  width: 30px;
+  height: 38px;
+  background-color: #0081CF;
+  border-radius: 50%;
+  bottom: 120px;
+  z-index: 3;
+  transition: transform 0.5s ease;
+}
+
+.eye-left {
+  left: 65px;
+}
+
+.eye-right {
+  right: 65px;
+}
+
+.eye-shine-left, .eye-shine-right {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  z-index: 4;
+}
+
+.eye-shine-left {
+  top: 5px;
+  right: 5px;
+}
+
+.eye-shine-right {
+  top: 5px;
+  left: 5px;
+}
+
+.blush-left, .blush-right {
+  position: absolute;
+  width: 20px;
+  height: 10px;
+  background-color: #ffafcc;
+  border-radius: 50%;
+  opacity: 0.7;
+  bottom: 105px;
+  z-index: 3;
+  transition: transform 0.5s ease;
+}
+
+.blush-left {
+  left: 50px;
+}
+
+.blush-right {
+  right: 50px;
+}
+
+.pet-mouth {
+  position: absolute;
+  width: 30px;
+  height: 20px;
+  background-color: #ffafcc;
+  border-radius: 0 0 15px 15px;
+  bottom: 95px;
+  left: 93px;
+  z-index: 3;
+  transition: all 0.3s ease;
+  visibility: visible !important;
+  opacity: 1 !important; /* Force opacity */
+}
+
+.pet-nose {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background-color: #a2d2ff;
+  border-radius: 50%;
+  bottom: 115px;
+  left: 104px;
+  z-index: 4;
+  transition: transform 0.5s ease;
+}
+
+/* Improved tail */
+.tail {
+  position: absolute;
+  width: 60px;
+  height: 35px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 0 50% 50% 0;
+  bottom: 60px;
+  right: 0;
+  z-index: 0;
+  transform-origin: 0% 50%;
+  pointer-events: none; /* Prevent tail from interfering with button clicks */
+}
+
+/* Improved paws/legs - only showing two front legs */
+.paw-front-left, .paw-front-right {
+  position: absolute;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  z-index: 1;
+  width: 20px;
+  height: 35px;
+  bottom: 0;
+  border-radius: 40% 40% 50% 50%;
+}
+
+.paw-front-left {
+  left: 65px;
+}
+
+.paw-front-right {
+  left: 135px;
+}
+
+/* Paw pads */
+.paw-front-left:after, .paw-front-right:after {
+  content: '';
+  position: absolute;
+  width: 16px;
+  height: 10px;
+  background-color: #ffcfd2;
+  border-radius: 50% 50% 45% 45%;
+  bottom: 0;
+  left: 2px;
+}
+
+.forelock {
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 50% 50% 0 50%;
+  transform: rotate(128deg);
+  top: 5px;
+  left: 85px;
+  z-index: 3;
+  transition: transform 0.5s ease;
+}
+
+.tear-left, .tear-right {
+  position: absolute;
+  width: 12px;
+  height: 18px; 
+  background-color: #a2d2ff;
+  border-radius: 50%;
+  opacity: 0;
+  z-index: 5;
+  transform: rotate(15deg);
+  transition: opacity 0.3s ease, transform 0.5s ease;
+}
+
+.tear-left {
+  bottom: 100px;
+  left: 68px;
+}
+
+.tear-right {
+  bottom: 100px;
+  right: 68px;
+}
+
+/* Sleep text */
+.zzz {
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  color: #a2d2ff;
+  top: 40px;
+  right: 30px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.pet.sleeping .zzz {
+  opacity: 1 !important; /* Force display */
+  animation: float 3s infinite ease-in-out;
+}
+
+/* Question mark for curious mood */
+.question-mark {
+  position: absolute;
+  font-size: 28px;
+  font-weight: bold;
+  color: #ffb347;
+  top: 40px;
+  right: 30px;
+  z-index: 10;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.pet.curious .question-mark {
+  opacity: 1 !important; /* Force display */
+  animation: bounce 1.5s infinite ease-in-out;
+}
+
+@keyframes float {
+  0% { transform: translateY(0) scale(0.8); opacity: 0; }
+  50% { transform: translateY(-20px) scale(1); opacity: 1; }
+  100% { transform: translateY(-40px) scale(0.8); opacity: 0; }
+}
+
+/* Animations */
+@keyframes blink {
+  0%, 45%, 100% { height: 38px; }
+  50% { height: 2px; }
+}
+
+@keyframes standardWag {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(8deg); }
+}
+
+@keyframes fastWag {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(15deg); }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes tearDrop {
+  0%, 100% { transform: translateY(0) rotate(15deg); opacity: 0.9; }
+  50% { transform: translateY(20px) rotate(15deg); opacity: 0; }
+}
+
+/* Head Movement */
+@keyframes lookLeft {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(-25px) rotate(-10deg); }
+}
+
+@keyframes lookRight {
+  0%, 100% { transform: translateX(0) rotate(0); }
+  50% { transform: translateX(25px) rotate(10deg); }
+}
+
+/* Curious head tilt animation */
+@keyframes curiousTilt {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(-8deg); }
+}
+
+/* Mood Classes */
+.pet.happy .pet-mouth {
+  width: 35px;
+  height: 25px;
+  border-radius: 0 0 50% 50%;
+}
+
+.pet.sad .pet-mouth {
+  width: 25px;
+  height: 15px;
+  border-radius: 50% 50% 0 0;
+  border-top: 3px solid #a2d2ff;
+  bottom: 90px;
+  background-color: transparent;
+}
+
+.pet.sad .eye-left, .pet.sad .eye-right {
+  height: 28px;
+  border-radius: 45% 45% 45% 45% / 60% 60% 40% 40%;
+}
+
+.pet.sad .tear-left, .pet.sad .tear-right {
+  width: 15px;
+  height: 22px;
+  opacity: 0.9;
+  border-radius: 60% 60% 60% 60% / 70% 70% 50% 50%;
+  animation: tearDrop 2s infinite;
+}
+
+.pet.sad .blush-left, .pet.sad .blush-right {
+  opacity: 0;
+}
+
+/* Improved angry face */
+.pet.angry .eye-left, .pet.angry .eye-right {
+  height: 30px;
+  transform: rotate(20deg);
+  border-radius: 50%;
+}
+
+.pet.angry .eye-left:before, .pet.angry .eye-right:before {
+  content: '';
+  position: absolute;
+  width: 35px;
+  height: 5px;
+  background-color: #0081CF;
+  bottom: 30px;
+  transform: rotate(-20deg);
+}
+
+
+
+.pet.angry .pet-mouth {
+  width: 20px; 
+  height: 0;
+  background-color: transparent;
+  border-top: 3px solid #a2d2ff;
+  border-radius: 0 0 10px 10px;
+  bottom: 100px;
+  left: 98px;
+  transform: translateY(5px) scaleX(1.2) rotate(180deg);
+}
+
+.pet.angry .mouth:after {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 5px;
+  background-color: transparent;
+  border-bottom: 3px solid #a2d2ff;
+  border-radius: 50%;
+  top: 3px;
+  left: 0;
+}
+
+
+
+.pet.angry .blush-left, .pet.angry .blush-right {
+  opacity: 0;
+}
+
+/* Improved sleeping transformation */
+.pet.sleeping .eye-left, .pet.sleeping .eye-right {
+  height: 10px;
+  width: 25px;
+  background-color: transparent;
+  border-bottom: 3px solid #a2d2ff;
+  border-radius: 50%;
+  bottom: 125px;
+  animation: none !important;
+}
+
+.pet.sleeping .eye-shine-left, .pet.sleeping .eye-shine-right {
+  opacity: 0;
+}
+
+.pet.sleeping .pet-mouth {
+  width: 15px;
+  height: 8px;
+  border-radius: 45% 45% 45% 45% / 60% 60% 40% 40%;
+  background-color: #a2d2ff;
+  transform: translateY(10px);
+}
+
+/* New Curious mood */
+.pet.curious .head {
+  animation: curiousTilt 2s infinite ease-in-out;
+}
+
+.pet.curious .eye-left, .pet.curious .eye-right {
+  height: 45px;  /* Slightly larger eyes */
+  width: 33px;
+}
+
+.pet.curious .pet-mouth {
+  width: 12px;
+  height: 12px;
+  background-color: #a2d2ff;
+  border-radius: 50%;
+  bottom: 95px;
+  left:104px;
+}
+
+.pet.curious .ear-left {
+  transform: rotate(-25deg);
+}
+
+.pet.curious .ear-right {
+  transform: rotate(25deg);
+}
+
+/* New Idle mood */
+.pet.idle .eye-left, .pet.idle .eye-right {
+  height: 30px;
+  width: 28px;
+}
+
+.pet.idle .pet-mouth {
+  width: 20px;
+  height: 10px;
+  background-color: #a2d2ff;
+  border-radius: 0 0 50% 50%;
+  bottom: 95px;
+}
+
+.pet.idle .blush-left, .pet.idle .blush-right {
+  opacity: 0.3;
+}
+
+/* Special animations */
+.pet.bounce {
+  animation: bounce 0.5s ease;
+}
+
+.pet.spin {
+  animation: spin 0.7s ease;
+}
+
+/* Status display */
+.status {
+  position: fixed;
+  bottom: 20px;
+  width: 80%;
+  padding: 10px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  z-index: 5;
+}
+
+.sparkles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.sparkle {
+  position: absolute;
+  width: 15px;
+  height: 15px;
+  background-color: #ffd166;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+}
+
+.sparkle:nth-child(1) { top: 30px; left: 50px; }
+.sparkle:nth-child(2) { top: 60px; right: 40px; }
+.sparkle:nth-child(3) { bottom: 70px; left: 30px; }
+.sparkle:nth-child(4) { top: 100px; right: 60px; }
+
+.pet.excited .sparkles {
+  opacity: 1;
+}
+
+/* Idle animation classes */
+.idle-animation .eye-left,
+.idle-animation .eye-right {
+  animation: blink 4s infinite;
+}
+
+.idle-animation .tail {
+  animation: standardWag 2s infinite;
+}
+
+/* Fast tail animation for excited state */
+.excited .tail, .happy-clicked .tail, .curious .tail {
+  animation: fastWag 0.5s infinite !important;
+}
+
+@keyframes breathe {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+.idle-animation .body {
+  animation: breathe 4s infinite ease-in-out;
+}
+
+/* Look direction classes - IMPROVED for more obvious movement */
+.pet.look-left .head,
+.pet.look-left .ear-left,
+.pet.look-left .ear-right,
+.pet.look-left .inner-ear-left,
+.pet.look-left .inner-ear-right,
+.pet.look-left .eye-left,
+.pet.look-left .eye-right,
+.pet.look-left .blush-left,
+.pet.look-left .blush-right,
+.pet.look-left .pet-mouth,
+.pet.look-left .pet-nose,
+.pet.look-left .forelock,
+.pet.look-left .tear-left,
+.pet.look-left .tear-right {
+  transform: translateX(-15px) rotate(-3deg);
+}
+
+.pet.look-right .head,
+    .pet.look-right .ear-left,
+    .pet.look-right .ear-right,
+    .pet.look-right .inner-ear-left,
+    .pet.look-right .inner-ear-right,
+    .pet.look-right .eye-left,
+    .pet.look-right .eye-right,
+    .pet.look-right .blush-left,
+    .pet.look-right .blush-right,
+    .pet.look-right .pet-mouth,
+    .pet.look-right .pet-nose,
+    .pet.look-right .forelock,
+    .pet.look-right .tear-left,
+    .pet.look-right .tear-right {
+      transform: translateX(15px) rotate(3deg);
+    }
+    
+    /* Temporary happy class for click interactions */
+    .pet.happy-clicked .pet-mouth {
+      width: 35px;
+      height: 25px;
+      border-radius: 0 0 50% 50%;
+      background-color: #ffafcc;
+    }
+    
+    .pet.happy-clicked .eye-left, 
+    .pet.happy-clicked .eye-right {
+      height: 38px;
+      border-radius: 50%;
+      transform: none;
+    }
+    
+    .pet.happy-clicked .blush-left,
+    .pet.happy-clicked .blush-right {
+      opacity: 0.7;
+    }
+    
+    /* Curious rapid head movement animation */
+    @keyframes curiousLook {
+      0%, 100% { transform: translateX(0) rotate(0deg); }
+      25% { transform: translateX(-10px) rotate(-3deg); }
+      50% { transform: translateX(0) rotate(0deg); }
+      75% { transform: translateX(10px) rotate(3deg); }
+    }
+    
+    .pet.curious-head-movement .head,
+    .pet.curious-head-movement .ear-left,
+    .pet.curious-head-movement .ear-right,
+    .pet.curious-head-movement .inner-ear-left,
+    .pet.curious-head-movement .inner-ear-right,
+    .pet.curious-head-movement .eye-left,
+    .pet.curious-head-movement .eye-right,
+    .pet.curious-head-movement .blush-left,
+    .pet.curious-head-movement .blush-right,
+    .pet.curious-head-movement .pet-mouth,
+    .pet.curious-head-movement .pet-nose,
+    .pet.curious-head-movement .forelock,
+    .pet.curious-head-movement .tear-left,
+    .pet.curious-head-movement .tear-right {
+      animation: curiousLook 2s ease-in-out;
+    }
+
+    /* Pet name and age card styling */
+.pet-info-card {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 15px;
+  padding: 10px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  min-width: 200px;
+  text-align: center;
+  animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.pet-name-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.display-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pet-name {
+  font-size: 18px;
+  color: #0081CF;
+  margin: 0;
+  padding: 0 5px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+.edit-name-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.pet-name-input {
+  padding: 5px 10px;
+  border: 2px solid #a2d2ff;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #0081CF;
+  width: 70%;
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+
+.pet-name-input:focus {
+  border-color: #0081CF;
+  box-shadow: 0 0 0 2px rgba(0, 129, 207, 0.2);
+}
+
+    .save-name-btn {
+      padding: 5px 10px;
+      background-color: #a2d2ff;
+      width: 70px;
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 5px;
+      transition: background-color 0.2s ease;
+    }
+    
+    .save-name-btn:hover {
+      background-color: #0081CF;
+    }
+    
+    .edit-name-btn {
+      background: none;
+      border: none;
+      left: 30px;
+      width: 50px;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0 5px;
+      transition: transform 0.2s ease;
+    }
+    
+    .edit-name-btn:hover {
+      transform: rotate(15deg);
+    }
+    
+    .pet-age {
+      font-size: 14px;
+      color: #666;
+      font-style: italic;
+    }
+
+  /* Updated status line CSS with better responsive positioning */
+.status {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: auto;
+  min-width: 200px;
+  max-width: 80%;
+  padding: 8px 12px;
+  background-color: #ffffff;
+  border: 3px solid #a2d2ff;
+  border-radius: 15px;
+  font-size: 16px;
+  color: #333;
+  text-align: center;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Better responsive adjustments for various screen sizes */
+@media (max-height: 700px) {
+  .status {
+    bottom: 60px;
+    font-size: 18px;
+    padding: 6px 10px;
+    min-width: 180px;
+  }
+}
+
+@media (max-height: 600px) {
+  .status {
+    bottom: 50px;
+    font-size: 16px;
+    padding: 5px 8px;
+    min-width: 160px;
+    max-width: 75%;
+  }
+}
+
+@media (max-width: 768px) {
+  .status {
+    bottom: 70px;
+    max-width: 85%;
+    padding: 6px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .status {
+    bottom: 80px;
+    max-width: 90%;
+    font-size: 13px;
+    padding: 5px 8px;
+  }
+}
+
+/* Extra small screens */
+@media (max-width: 320px) {
+  .status {
+    bottom: 85px;
+    max-width: 95%;
+    font-size: 11px;
+    padding: 4px 6px;
+    min-width: 140px;
+  }
+}
