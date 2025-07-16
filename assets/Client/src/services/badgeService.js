@@ -1,8 +1,5 @@
 import axios from 'axios';
 
-// These functions are now only used in the Habits component when a habit is completed
-// They are no longer used in the Dashboard component on page load
-
 // Function to check if a user has earned any new badges based on their actions
 export const checkForEarnedBadges = async (userId) => {
   try {
