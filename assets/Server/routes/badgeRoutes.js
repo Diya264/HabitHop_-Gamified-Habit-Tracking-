@@ -59,7 +59,7 @@ router.post('/award/:userId/:badgeId', async (req, res) => {
       [userId, badgeId]
     );
     
-    console.log(`✅ Badge ${badgeId} successfully awarded to user ${userId}`);
+    console.log(`Badge ${badgeId} successfully awarded to user ${userId}`);
     
     res.status(200).json({ 
       success: true,
@@ -77,7 +77,7 @@ router.post('/award/:userId/:badgeId', async (req, res) => {
 
 // Test endpoint to force badge check (for debugging)
 router.get('/test-check/:userId', (req, res) => {
-  console.log(`🧪 Test badge check endpoint called for user ${req.params.userId}`);
+  console.log(`Test badge check endpoint called for user ${req.params.userId}`);
   badgeController.checkForNewBadges(req, res);
 });
 
@@ -85,7 +85,7 @@ router.get('/test-check/:userId', (req, res) => {
 router.get('/test-consecutive/:userId', async (req, res) => {
   try {
     const userId = parseInt(req.params.userId);
-    console.log(`🧪 Test consecutive habits endpoint called for user ${userId}`);
+    console.log(`Test consecutive habits endpoint called for user ${userId}`);
     
     const { countHabitsInRow } = require('../utils/badgeUtils');
     const count = await countHabitsInRow(userId);
@@ -106,7 +106,7 @@ router.get('/test-debug/:userId/:condition', async (req, res) => {
   try {
     const userId = parseInt(req.params.userId);
     const condition = req.params.condition;
-    console.log(`🧪 Test debug badge endpoint called for user ${userId} and condition "${condition}"`);
+    console.log(`Test debug badge endpoint called for user ${userId} and condition "${condition}"`);
     
     // 1. Check if the badge exists
     const [badgeRows] = await db.query(
@@ -158,7 +158,7 @@ router.get('/test-debug/:userId/:condition', async (req, res) => {
 // Test endpoint to view all badge conditions
 router.get('/test-conditions', async (req, res) => {
   try {
-    console.log(`🧪 Test badge conditions endpoint called`);
+    console.log(`Test badge conditions endpoint called`);
     
     // Get badges directly with proper SQL syntax
     const [badges] = await db.query('SELECT id, name, badge_condition, description FROM badges');
