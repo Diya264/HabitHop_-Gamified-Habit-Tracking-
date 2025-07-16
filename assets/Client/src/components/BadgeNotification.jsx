@@ -10,14 +10,14 @@ const BadgeNotification = ({ badge, onClose }) => {
     
     // Validate the badge before showing
     if (!badge) {
-      console.log('❌ No badge data provided, not showing notification');
+      console.log('No badge data provided, not showing notification');
       onClose();
       return;
     }
     
     // Additional validation to ensure we have at least an ID or name
     if (!badge.id && !badge.badge_name && !badge.name) {
-      console.log('❌ Invalid badge data (missing ID and name), not showing notification');
+      console.log('Invalid badge data (missing ID and name), not showing notification');
       console.log('Badge data received:', badge);
       onClose();
       return;
@@ -27,7 +27,7 @@ const BadgeNotification = ({ badge, onClose }) => {
     const badgeId = badge.id || 'unknown';
     const badgeName = badge.badge_name || badge.name || 'Unknown Badge';
     
-    console.log(`✅ Valid badge data received: ID=${badgeId}, Name=${badgeName}`);
+    console.log(`Valid badge data received: ID=${badgeId}, Name=${badgeName}`);
     
     // Mark this badge as valid
     console.log(`🎉 Showing notification for badge ${badgeId} (${badgeName})`);
@@ -35,13 +35,13 @@ const BadgeNotification = ({ badge, onClose }) => {
     
     // Animate in
     setTimeout(() => {
-      console.log('🔄 Setting badge notification to visible');
+      console.log('Setting badge notification to visible');
       setVisible(true);
     }, 100);
     
     // Auto-close after 8 seconds
     const timer = setTimeout(() => {
-      console.log('⏱️ Auto-closing badge notification after timeout');
+      console.log('Auto-closing badge notification after timeout');
       setVisible(false);
       setTimeout(onClose, 500); // Allow animation to complete before removing
     }, 8000);
