@@ -21,9 +21,8 @@
     text-align: center;
     border-radius: 10px;
     transition: transform 0.2s;
-    /* cursor: default; */
-    cursor: pointer; /* Changed from default to pointer */
-    position: relative; /* Added for hover effects */
+    cursor: pointer; 
+    position: relative; 
   }
 
   .badge-icon {
@@ -55,7 +54,7 @@
   
   .badge:hover {
     transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
   }
 
   .section {
@@ -85,7 +84,7 @@
     padding: 1rem 0;
   }
   
-   /* New styles for badge modal */
+   /* badge modal */
    .badge-modal-overlay {
     position: fixed;
     top: 0;
@@ -184,7 +183,7 @@
     line-height: 1.4;
   }
 
-/* Replace your existing refresh button styles with these */
+/* refresh button style */
 .refresh-button {
   padding: 10px 18px;
   background: linear-gradient(to right, #9c6ade, #7e57c2);
@@ -234,7 +233,7 @@
   letter-spacing: 0.5px;
 }
 
-/* For dark mode support (optional) */
+/* For dark mode support i have work on itt in future */
 @media (prefers-color-scheme: dark) {
   .refresh-button {
     background: linear-gradient(to right, #a37be7, #8e67d0);
