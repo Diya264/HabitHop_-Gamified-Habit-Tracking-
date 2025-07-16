@@ -13,7 +13,7 @@ const StreakTest = () => {
         <div className="dashboard-header">
           <h1>Streak Testing Page</h1>
           <p className="text-muted">
-            Use this page to test how the streak calculation works in your app.
+            using this page to test how the streak calculation works in my app.
           </p>
         </div>
         <StreakTester />
