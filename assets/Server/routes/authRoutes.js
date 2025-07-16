@@ -8,7 +8,7 @@ const db = require("../config/db");
 
 const router = express.Router();
 
-// ✅ User Signup Route
+// User Signup Route
 router.post(
   "/register",
   [
@@ -31,15 +31,15 @@ router.post(
       }
 
       await User.create(name, email, password);
-      res.status(201).json({ message: "✅ User registered successfully!" });
+      res.status(201).json({ message: "User registered successfully!" });
     } catch (err) {
-      console.error("❌ Registration Error:", err);
-      res.status(500).json({ message: "❌ Server error", error: err.message });
+      console.error("Registration Error:", err);
+      res.status(500).json({ message: "Server error", error: err.message });
     }
   }
 );
 
-// ✅ User Login Route
+// User Login Route
 router.post(
   "/login",
   [
@@ -57,12 +57,12 @@ router.post(
     try {
       const user = await User.findByEmail(email);
       if (!user) {
-        return res.status(400).json({ message: "❌ Invalid email or password" });
+        return res.status(400).json({ message: "Invalid email or password" });
       }
 
       const isMatch = await bcrypt.compare(password, user.password);
       if (!isMatch) {
-        return res.status(400).json({ message: "❌ Invalid email or password" });
+        return res.status(400).json({ message: "Invalid email or password" });
       }
 
       const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: "7d" });
@@ -75,7 +75,7 @@ router.post(
   }
 );
 
-// ✅ GET user details using token
+// GET user details using token
 router.get("/user", authenticateToken, async (req, res) => {
   const userId = req.user.id;
   try {
