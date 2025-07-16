@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL = "http://localhost:5000/api/habits";
 
-// ✅ Add a habit
+// Add a habit
 export const addHabit = async (habitData, token) => {
   const res = await axios.post(`${API_URL}/add`, habitData, {
     headers: { Authorization: `Bearer ${token}` },
@@ -10,7 +10,7 @@ export const addHabit = async (habitData, token) => {
   return res.data;
 };
 
-// ✅ Get all habits
+// Get all habits
 export const getHabits = async (token) => {
   const res = await axios.get(`${API_URL}/all`, {
     headers: { Authorization: `Bearer ${token}` },
@@ -18,7 +18,7 @@ export const getHabits = async (token) => {
   return res.data;
 };
 
-// ✅ Update a habit
+// Update a habit
 export const updateHabit = async (habitId, completed, token, type = null) => {
   console.log(`🔄 Updating habit ${habitId} to completed=${completed}${type ? `, type=${type}` : ''}`);
   
@@ -28,9 +28,6 @@ export const updateHabit = async (habitId, completed, token, type = null) => {
     { headers: { Authorization: `Bearer ${token}` } }
   );
   
-  // We're no longer checking for badges here to avoid duplicate checks
-  // Badge checking is now handled exclusively in the Habits component
-  
   // Check if the response included a mood update
   if (res.data && res.data.mood) {
     console.log(`🐱 Server returned updated mood: ${res.data.mood}`);
@@ -39,7 +36,7 @@ export const updateHabit = async (habitId, completed, token, type = null) => {
   return res.data;
 };
 
-// ✅ Delete a habit
+// Delete a habit
 export const deleteHabit = async (habitId, token) => {
   const res = await axios.delete(`${API_URL}/delete/${habitId}`, {
     headers: { Authorization: `Bearer ${token}` },
