@@ -2,7 +2,7 @@ const Badge = require('../models/badgeModel');
 const UserBadge = require('../models/userBadgeModel');
 const { checkAndAwardBadges, awardRandomBadge } = require('../utils/badgeUtils');
 
-// 🟡 Get all badges
+// Get all badges
 const getAllBadges = async (req, res) => {
   try {
     const badges = await Badge.getAll();
@@ -12,9 +12,9 @@ const getAllBadges = async (req, res) => {
   }
 };
 
-// 🟢 Get badges for a user
+// Get badges for a user
 const getUserBadges = async (req, res) => {
-  const userId = req.user.id; // assuming middleware added user to req
+  const userId = req.user.id; 
   try {
     const badges = await UserBadge.getUserBadges(userId);
     res.status(200).json(badges);
@@ -23,7 +23,7 @@ const getUserBadges = async (req, res) => {
   }
 };
 
-// 🔵 New: Get all badges with user's unlocked status
+// New: Get all badges with user's unlocked status
 const getAllBadgesWithUserStatus = async (req, res) => {
   const userId = parseInt(req.params.userId);
   if (!userId) return res.status(400).json({ message: "Invalid userId" });
@@ -32,7 +32,7 @@ const getAllBadgesWithUserStatus = async (req, res) => {
     const allBadges = await Badge.getAll();
     const userBadges = await UserBadge.getUserBadges(userId);
 
-    // Debug info
+    // Debugg info
     console.log("All badges from DB:", allBadges);
     console.log("User badges:", userBadges);
 
@@ -57,20 +57,20 @@ const getAllBadgesWithUserStatus = async (req, res) => {
   }
 };
 
-// 🟠 Check for newly earned badges
+// Check for newly earned badges
 const checkForNewBadges = async (req, res) => {
   const userId = parseInt(req.params.userId);
   console.log(`🔍 Received request to check badges for user ${userId}`);
   
   if (!userId) {
-    console.log(`❌ Invalid userId provided: ${req.params.userId}`);
+    console.log(`Invalid userId provided: ${req.params.userId}`);
     return res.status(400).json({ message: "Invalid userId" });
   }
 
   try {
-    console.log(`🏆 Checking if user ${userId} has earned any new badges`);
+    console.log(`Checking if user ${userId} has earned any new badges`);
     
-    // Check if the user has earned any new badges
+    // Checking if the user has earned any new badges
     const newBadge = await checkAndAwardBadges(userId);
 
     if (newBadge) {
@@ -105,18 +105,18 @@ const checkForNewBadges = async (req, res) => {
   }
 };
 
-// 🟣 Award a random motivation badge
+// Award a random motivation badge
 const awardRandomMotivationBadge = async (req, res) => {
   const userId = parseInt(req.params.userId);
   console.log(`🎲 Received request to award random badge for user ${userId}`);
   
   if (!userId) {
-    console.log(`❌ Invalid userId provided: ${req.params.userId}`);
+    console.log(`Invalid userId provided: ${req.params.userId}`);
     return res.status(400).json({ message: "Invalid userId" });
   }
 
   try {
-    console.log(`🎯 Attempting to award random motivation badge to user ${userId}`);
+    console.log(`Attempting to award random motivation badge to user ${userId}`);
     
     // Award a random motivation badge
     const randomBadge = await awardRandomBadge(userId);
