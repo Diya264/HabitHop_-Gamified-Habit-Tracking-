@@ -160,12 +160,11 @@ const Pet = () => {
       clearTimeout(randomMoodTimerRef.current);
     }
     
-    // Set random timer between 25-45 seconds
+    // setting random timer between 25-45 seconds
     const randomTime = 25000 + Math.floor(Math.random() * 20000);
     
     randomMoodTimerRef.current = setTimeout(() => {
       // Only change mood if pet is in idle or happy state AND not currently interacting
-      // AND there's no habit-based mood override
       if ((mood === 'idle' || mood === 'happy') && !isInteracting && !habitBasedMood) {
         const randMood = Math.random();
         
@@ -195,8 +194,7 @@ const Pet = () => {
           startRandomHeadMovement();
         }
       } else if (!isInteracting && habitBasedMood && mood !== habitBasedMood) {
-        // If we're not interacting and there's a habit-based mood that's different from current mood,
-        // revert to the habit-based mood
+        // If i am not interacting and there's a habit-based mood that's different from current mood, revert to the habit-based mood
         resetMood();
         setOriginalMood(habitBasedMood);
         setMood(habitBasedMood);
@@ -207,7 +205,7 @@ const Pet = () => {
         }
       }
       
-      // Restart the random mood timer
+      // restarting the random mood timer
       startRandomMoodChanges();
     }, randomTime);
   };
@@ -252,7 +250,7 @@ const Pet = () => {
       console.log(`🐱 Interaction timeout ended for mood: ${newMood}`);
       setIsInteracting(false);
       
-      // After the interaction period, if we have a habit-based mood, revert to it
+      // After the interaction period, if i have a habit-based mood, revert to it
       if (habitBasedMood) {
         console.log(`🐱 Reverting to habit-based mood: ${habitBasedMood} after interaction timeout`);
         fetchMoodFromServer(); // This will update the mood if not interacting
@@ -388,7 +386,7 @@ const Pet = () => {
         setMood('happy-clicked');
         setStatusText("Your pet loves the attention!");
         
-        // Remove happy-clicked class after animation
+        // remove happy-clicked class after animation
         setTimeout(() => {
           fetchMoodFromServer();
           setIsInteracting(false);
@@ -415,7 +413,7 @@ const Pet = () => {
         }, 10);
         
       } else if (mood === 'idle') {
-        // Change from idle to curious when clicked
+        // Chage from idle to curious when clicked
         resetMood();
         setOriginalMood('angry');
         setMood('angry');
@@ -527,7 +525,7 @@ const Pet = () => {
     // Parse the creation date
     try {
       if (typeof creationDate === 'string') {
-        // Handle MySQL timestamp format (YYYY-MM-DD HH:MM:SS)
+        // Handle MySQL timestamp format (year-month-day) or is it year-day-month i forgot 
         if (creationDate.includes('-') && !creationDate.includes('T')) {
           // Replace space with T to make it ISO format
           created = new Date(creationDate.replace(' ', 'T'));
