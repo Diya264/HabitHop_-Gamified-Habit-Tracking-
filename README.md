@@ -5,7 +5,7 @@ HabitHop is a productivity-focused web application designed to help users build 
 ## Features
 -  **Habit Tracking:** Add, update, and monitor habits with detailed progress statistics.
 -  **Streaks & Achievements:** View overall and individual habit streaks, and unlock achievements for consistency.
--  **Interactive Virtual Pet:** A virtual pet whose mood dynamically reflects your progress, providing instant feedback.
+-  **Interactive Virtual Pet:** A virtual pet whose mood dynamically reflects your progress, providing instant feedback, responds to clicks.
 -  **Rewards System:** Earn rewards as you maintain habits to stay motivated.
 -  **Fortune Cookie Insights:** Receive a daily motivational message for encouragement.
 -  **Responsive Design:** Optimized for both desktop and mobile devices.
