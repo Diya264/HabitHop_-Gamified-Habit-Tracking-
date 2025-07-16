@@ -8,7 +8,7 @@ function Rewards({ user }) {
   const [selectedBadge, setSelectedBadge] = useState(null);
   const [refreshTrigger, setRefreshTrigger] = useState(0); // Add a refresh trigger state
 
-  const getIconPath = (filename) => `/assets/badges/${filename}`; // ✅ FIXED PATH
+  const getIconPath = (filename) => `/assets/badges/${filename}`; 
 
   // Create a fetchBadges function that can be called to refresh the badges
   const fetchBadges = useCallback(() => {
@@ -27,7 +27,7 @@ function Rewards({ user }) {
       .then((checkResponse) => {
         console.log("Badge check response:", checkResponse.data);
         
-        // Now get all badges with their unlocked status
+        // nnow get all badges with their unlocked status
         return axios.get(`http://localhost:5000/api/badges/user/${user.id}`, {
           headers: { Authorization: `Bearer ${token}` },
         });
@@ -75,8 +75,7 @@ function Rewards({ user }) {
         const updateTime = parseInt(badgesUpdated);
         const currentTime = Date.now();
         
-        // Only refresh if the update is recent (within the last 10 seconds)
-        // This prevents old updates from triggering refreshes
+        // Only refresh if the update is recent (within the last 10 seconds), preventing old updates from triggering refreshes
         if (!isNaN(updateTime) && (currentTime - updateTime) < 10000) {
           console.log(`🔄 Recent badge update detected (${Math.round((currentTime - updateTime)/1000)}s ago), refreshing badges...`);
           fetchBadges();
@@ -272,7 +271,6 @@ function Rewards({ user }) {
         </div>
       </div>
 
-      {/* Debug section removed */}
     </div>
   );
 }
