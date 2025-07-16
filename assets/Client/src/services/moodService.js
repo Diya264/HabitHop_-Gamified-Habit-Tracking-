@@ -24,7 +24,6 @@ window.addEventListener('refresh-pet-mood', (event) => {
   // Handle server-provided mood
   if (event.detail && event.detail.serverMood) {
     console.log(`🔄 moodService received server-provided mood: ${event.detail.serverMood}`);
-    // We don't need to do anything here as the Pet component will handle this directly
   }
 });
 
@@ -49,7 +48,7 @@ export const fetchUserMood = async (cacheParam = '') => {
 
     console.log('Fetching user mood from server...');
     
-    // Try both URL formats to ensure compatibility
+    // trying both URL formats to ensure compatibility
     let response;
     try {
       // Add cache-busting parameter to prevent caching
