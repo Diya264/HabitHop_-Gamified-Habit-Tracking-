@@ -14,7 +14,7 @@ const markHabitComplete = async (req, res) => {
       return res.status(401).json({ message: "Unauthorized: No user ID found" });
     }
 
-    // ✅ Check if the habit exists
+    // Check if the habit exists
     const [habit] = await db.execute("SELECT * FROM habits WHERE id = ? AND user_id = ?", [id, userId]);
 
     if (habit.length === 0) {
@@ -70,7 +70,7 @@ const markHabitComplete = async (req, res) => {
         [completed ? 1 : 0, id, userId]
       );
 
-      // 🏅 Check and award badges after successful completion
+      // Check and award badges after successful completion
       console.log(`🏅 Checking for badges after habit completion for user ${userId}`);
       const newBadge = await checkAndAwardBadges(userId);
       
@@ -100,7 +100,7 @@ const markHabitComplete = async (req, res) => {
     let completionDate = completed ? today : null;
     console.log("🔹 Completion Date to be updated:", completionDate);
 
-    // ✅ Update habit_logs
+    // Update habit_logs
     await db.execute(
       "INSERT INTO habit_logs (habit_id, user_id, completion_date) " +
       "VALUES (?, ?, ?) " +
@@ -108,13 +108,13 @@ const markHabitComplete = async (req, res) => {
       [id, userId, completionDate, completionDate]
     );
 
-    // ✅ Update habits table
+    // Update habits table
     await db.execute(
       "UPDATE habits SET completed = ? WHERE id = ? AND user_id = ?",
       [completed ? 1 : 0, id, userId]
     );
     
-    // 🏅 Check and award badges after successful completion
+    // Check and award badges after successful completion
     console.log(`🏅 Checking for badges after habit completion for user ${userId}`);
     const newBadge = await checkAndAwardBadges(userId);
     
@@ -137,7 +137,7 @@ const markHabitComplete = async (req, res) => {
       mood: updatedMood
     });
   } catch (error) {
-    console.error("❌ Error updating habit completion:", error);
+    console.error("Error updating habit completion:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
@@ -224,7 +224,7 @@ const getUserStreak = async (req, res) => {
   }
 };
 
-// 🆕 Route to get the user's mood
+// Route to get the user's mood
 const getUserMood = async (req, res) => {
   try {
     const userId = req.user.id;
@@ -256,13 +256,13 @@ const getUserMood = async (req, res) => {
 };
 
 
-// ✅ Fetch the habit streak
+// Fetch the habit streak
 const getHabitStreak = async (req, res) => {
   try {
     const userId = req.user.id;
     const habitId = req.params.habitId;
 
-    console.log("🔹 Fetching streak for habit:", { habitId, userId });
+    console.log(" Fetching streak for habit:", { habitId, userId });
 
     const query =
       "SELECT hl.completion_date " +
@@ -332,7 +332,7 @@ const getHabitStreak = async (req, res) => {
   }
 };
 
-// ✅ Complete Habit
+// Complete Habit
 const completeHabit = async (req, res) => {
   const { habitId } = req.params;
   const userId = req.user ? req.user.id : null;
@@ -404,10 +404,10 @@ const completeHabit = async (req, res) => {
       mood: updatedMood
     });
   } catch (error) {
-    console.error("❌ Error completing habit:", error);
+    console.error("Error completing habit:", error);
     res.status(500).json({ message: "Server error" });
   }
 };
 
-// ✅ Now export after defining all functions
+// Now export after defining all functions
 module.exports = { markHabitComplete, getHabitStreak, completeHabit, getUserStreak, getUserMood };
