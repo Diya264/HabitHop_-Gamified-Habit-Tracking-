@@ -1,17 +1,14 @@
 .pet-container {
   display: flex;
-  justify-content: flex-start; /* Changed from center to flex-start */
-  align-items: flex-start; /* Changed from center to flex-start */
-  /* justify-content: center;
-  align-items: center; */
-  min-height: 100vh; /* Changed from height: 100vh */
-  /* height: 100vh; */
+  justify-content: flex-start; 
+  align-items: flex-start; 
+  min-height: 100vh; 
   background-color: transparent;
   font-family: Arial, sans-serif;
-  overflow-x: hidden; /* Only hide horizontal overflow */
-  overflow-y: auto; /* Allow vertical scrolling */
+  overflow-x: hidden;
+  overflow-y: auto
   margin: 0;
-  padding: 0; /* 20px Add some padding */
+  padding: 0; 
 }
 
 
@@ -48,8 +45,8 @@ button:hover {
   height: 220px;
   cursor: pointer;
   transition: transform 0.3s ease;
-  left: calc(50% - 110px); /* Center the pet */
-  top: calc(50% - 110px); /* Center the pet */
+  left: calc(50% - 110px); 
+  top: calc(50% - 110px); 
   z-index: 1;
 }
 
@@ -194,7 +191,7 @@ button:hover {
   z-index: 3;
   transition: all 0.3s ease;
   visibility: visible !important;
-  opacity: 1 !important; /* Force opacity */
+  opacity: 1 !important; 
 }
 
 .pet-nose {
@@ -221,10 +218,9 @@ button:hover {
   right: 0;
   z-index: 0;
   transform-origin: 0% 50%;
-  pointer-events: none; /* Prevent tail from interfering with button clicks */
+  pointer-events: none; 
 }
 
-/* Improved paws/legs - only showing two front legs */
 .paw-front-left, .paw-front-right {
   position: absolute;
   background-color: #ffffff;
@@ -292,7 +288,7 @@ button:hover {
   right: 68px;
 }
 
-/* Sleep text */
+/* Sleeping text */
 .zzz {
   position: absolute;
   font-size: 28px;
@@ -307,11 +303,11 @@ button:hover {
 }
 
 .pet.sleeping .zzz {
-  opacity: 1 !important; /* Force display */
+  opacity: 1 !important;
   animation: float 3s infinite ease-in-out;
 }
 
-/* Question mark for curious mood */
+/* question mark forr curious mood */
 .question-mark {
   position: absolute;
   font-size: 28px;
@@ -326,7 +322,7 @@ button:hover {
 }
 
 .pet.curious .question-mark {
-  opacity: 1 !important; /* Force display */
+  opacity: 1 !important; 
   animation: bounce 1.5s infinite ease-in-out;
 }
 
@@ -336,7 +332,7 @@ button:hover {
   100% { transform: translateY(-40px) scale(0.8); opacity: 0; }
 }
 
-/* Animations */
+/* Aniimations */
 @keyframes blink {
   0%, 45%, 100% { height: 38px; }
   50% { height: 2px; }
@@ -465,7 +461,7 @@ button:hover {
   opacity: 0;
 }
 
-/* Improved sleeping transformation */
+
 .pet.sleeping .eye-left, .pet.sleeping .eye-right {
   height: 10px;
   width: 25px;
@@ -488,13 +484,13 @@ button:hover {
   transform: translateY(10px);
 }
 
-/* New Curious mood */
+
 .pet.curious .head {
   animation: curiousTilt 2s infinite ease-in-out;
 }
 
 .pet.curious .eye-left, .pet.curious .eye-right {
-  height: 45px;  /* Slightly larger eyes */
+  height: 45px;  
   width: 33px;
 }
 
@@ -515,7 +511,6 @@ button:hover {
   transform: rotate(25deg);
 }
 
-/* New Idle mood */
 .pet.idle .eye-left, .pet.idle .eye-right {
   height: 30px;
   width: 28px;
@@ -607,7 +602,7 @@ button:hover {
   animation: breathe 4s infinite ease-in-out;
 }
 
-/* Look direction classes - IMPROVED for more obvious movement */
+/* Look direction classes */
 .pet.look-left .head,
 .pet.look-left .ear-left,
 .pet.look-left .ear-right,
@@ -687,7 +682,7 @@ button:hover {
       animation: curiousLook 2s ease-in-out;
     }
 
-    /* Pet name and age card styling */
+    /* pet name and age card */
 .pet-info-card {
   position: absolute;
   top: 20px;
@@ -793,7 +788,6 @@ button:hover {
       font-style: italic;
     }
 
-  /* Updated status line CSS with better responsive positioning */
 .status {
   position: absolute;
   bottom: 10px;
@@ -813,7 +807,6 @@ button:hover {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Better responsive adjustments for various screen sizes */
 @media (max-height: 700px) {
   .status {
     bottom: 60px;
