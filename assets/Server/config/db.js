@@ -11,14 +11,14 @@ const db = mysql.createPool({
   queueLimit: 0,
 });
 
-// ✅ Test database connection
+// Test database connection
 async function testConnection() {
   try {
     const connection = await db.getConnection();
-    console.log('✅ Connected to MySQL Database!');
+    console.log('Connected to MySQL Database!');
     connection.release();
   } catch (err) {
-    console.error('❌ Database connection failed:', err.message);
+    console.error('Database connection failed:', err.message);
   }
 }
 
