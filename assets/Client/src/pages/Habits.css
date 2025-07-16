@@ -6,7 +6,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
-/* Main container styles - no card effect, just max-width constraint */
+/* Main container style */
 .habit-dashboard {
   max-width: 800px;
   width: 100%;
@@ -29,7 +29,7 @@ body {
 }
 
 .app-icon {
-  background-color: #0cb4ce; /* cyan-500 */
+  background-color: #0cb4ce;
   color: white;
   padding: 0.75rem;
   border-radius: 0.5rem;
@@ -43,22 +43,22 @@ body {
 .app-title h2 {
   font-size: 2rem;
   font-weight: 700;
-  color: #1e293b; /* slate-800 */
+  color: #1e293b; 
   margin: 0;
   line-height: 1.2;
 }
 
 .app-subtitle {
   font-size: 1rem;
-  color: #64748b; /* slate-500 */
+  color: #64748b;
   margin: 0;
 }
 
 .streak-badge {
-  background-color: #fef3c7; /* amber-100 */
+  background-color: #fef3c7;
   padding: 0.75rem;
   border-radius: 0.5rem;
-  color: #f59e0b; /* amber-500 */
+  color: #f59e0b;
   font-size: 1.25rem;
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@ body {
 
 /* Medium-sized add button */
 .add-button {
-  background-color: #0cb4ce; /* cyan-500 */
+  background-color: #0cb4ce;
   color: white;
   border: none;
   border-radius: 0.5rem;
@@ -104,7 +104,7 @@ body {
 }
 
 .add-button:hover {
-  background-color: #0891b2; /* cyan-600 */
+  background-color: #0891b2;
 }
 
 /* Habits list styling */
@@ -131,19 +131,19 @@ body {
 }
 
 .empty-message {
-  color: #475569; /* slate-600 */
+  color: #475569;
   margin: 0;
   font-size: 1.25rem;
   font-weight: 500;
 }
 
 .empty-hint {
-  color: #64748b; /* slate-500 */
+  color: #64748b;
   font-size: 1rem;
   margin-top: 0.5rem;
 }
 
-/* Habit item styling - improved visibility */
+/* Habit item styling*/
 .habit-item {
   background-color: white;
   border-radius: 0.5rem;
@@ -161,7 +161,7 @@ body {
 }
 
 .habit-item.completed {
-  border-left: 4px solid #34d399; /* emerald-400 */
+  border-left: 4px solid #34d399;
 }
 
 .habit-left {
@@ -177,8 +177,8 @@ body {
   width: 36px;
   height: 36px;
   border-radius: 0.5rem;
-  background-color: #f1f5f9; /* slate-100 */
-  color: #94a3b8; /* slate-400 */
+  background-color: #f1f5f9;
+  color: #94a3b8; 
   border: none;
   margin-right: 1rem;
   cursor: pointer;
@@ -190,12 +190,12 @@ body {
 }
 
 .toggle-button:hover {
-  background-color: #e2e8f0; /* slate-200 */
+  background-color: #e2e8f0; 
 }
 
 .toggle-button.completed {
-  background-color: #d1fae5; /* emerald-100 */
-  color: #10b981; /* emerald-500 */
+  background-color: #d1fae5;
+  color: #10b981;
 }
 
 .check-icon {
@@ -207,7 +207,7 @@ body {
   opacity: 1;
 }
 
-/* Improved habit name visibility */
+/* habit name visibility */
 .habit-info {
   flex: 1;
   min-width: 0;
@@ -216,17 +216,17 @@ body {
 
 .habit-name {
   font-weight: 500;
-  overflow: visible; /* Allow text to be fully visible */
-  color: #334155; /* slate-700 */
+  overflow: visible; 
+  color: #334155; 
   margin: 0;
   font-size: 1.125rem;
-  word-break: break-word; /* Allow long words to break */
-  cursor: pointer; /* Show it's clickable */
+  word-break: break-word; 
+  cursor: pointer; 
 }
 
 .habit-name.completed {
   text-decoration: line-through;
-  color: #94a3b8; /* slate-400 */
+  color: #94a3b8; 
 }
 
 .streak-indicator {
@@ -234,16 +234,16 @@ body {
   align-items: center;
   margin-top: 0.25rem;
   font-size: 0.875rem;
-  color: #d97706; /* amber-600 */
+  color: #d97706; 
 }
 
 .streak-icon {
   margin-right: 0.375rem;
 }
 
-/* Smaller delete button */
+/* delete button */
 .delete-button {
-  color: #94a3b8; /* slate-400 */
+  color: #94a3b8; 
   background: none;
   border: none;
   width: 36px;
@@ -260,14 +260,14 @@ body {
 }
 
 .delete-button:hover {
-  color: #ef4444; /* red-500 */
-  background-color: #fee2e2; /* red-100 */
+  color: #ef4444; 
+  background-color: #fee2e2; 
 }
 
 /* Motivational section */
 .motivation-section {
   margin-top: 2rem;
-  background-color: rgba(51, 65, 85, 0.9); /* slate-700 with opacity */
+  background-color: rgba(51, 65, 85, 0.9);
   border-radius: 0.5rem;
   padding: 1.5rem;
   text-align: center;
@@ -278,11 +278,11 @@ body {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  background-color: #475569; /* slate-600 */
+  background-color: #475569; 
   padding: 0.75rem;
   border-radius: 0.5rem;
   margin-bottom: 0.75rem;
-  color: #facc15; /* yellow-400 */
+  color: #facc15;
   font-size: 1.25rem;
 }
 
@@ -295,7 +295,7 @@ body {
 
 .motivation-subtext {
   font-size: 0.875rem;
-  color: #cbd5e1; /* slate-300 */
+  color: #cbd5e1; 
   margin-top: 0.375rem;
 }
 
@@ -379,14 +379,14 @@ body {
   }
 }
 
-/* Enhanced Habit Type Select styling */
+/* Habit Type Select styling */
 .habit-form-container {
   margin-bottom: 2rem;
 }
 
 .habit-type-select {
   background-color: white;
-  color: #334155; /* slate-700 */
+  color: #334155; 
   font-size: 1rem;
   font-weight: 500;
   border: none;
@@ -407,7 +407,7 @@ body {
   flex-shrink: 0;
   position: relative;
   z-index: 1;
-  min-width: 140px; /* Ensure it has enough space for text */
+  min-width: 140px; 
 }
 
 .habit-type-select:hover {
@@ -421,7 +421,7 @@ body {
   background-color: white;
 }
 
-/* Custom styling for the options */
+/* styling for the options */
 .habit-type-select option {
   font-weight: normal;
   padding: 8px;
@@ -429,15 +429,15 @@ body {
 
 /* Style for the select when showing the dropdown */
 .habit-type-select:active {
-  background-color: #f8fafc; /* slate-50 */
+  background-color: #f8fafc; 
 }
 
-/* Add a subtle border on the daily habit option to match app theme */
+/* Add a subtle border on the daily habit optio */
 .habit-type-select option[value="daily"] {
   background-color: rgba(12, 180, 206, 0.05);
 }
 
-/* Add a subtle border on the one-time task option to match app theme */
+/* Add a subtle border on the one-time task option */
 .habit-type-select option[value="one-time"] {
   background-color: rgba(255, 152, 0, 0.05);
 }
@@ -455,19 +455,19 @@ body {
 }
 
 .habit-type-badge.daily {
-  background-color: #0cb4ce; /* cyan-500 */
+  background-color: #0cb4ce;
 }
 
 .habit-type-badge.one-time {
-  background-color: #ff9800; /* amber-500 */
+  background-color: #ff9800; 
 }
 
-/* Make sure form items align properly */
+
 .habit-form {
   align-items: center;
 }
 
-/* Media query adjustments */
+/* Media query */
 @media (max-width: 768px) {
   .habit-type-select {
     font-size: 0.875rem;
