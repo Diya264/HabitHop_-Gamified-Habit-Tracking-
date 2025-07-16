@@ -30,7 +30,7 @@ function Habits() {
     fetchHabits();
   }, []);
 
-  // ✅ Add a habit
+  // Add a habit
   const handleAddHabit = async () => {
     if (!newHabit.trim()) return;
     try {
@@ -49,7 +49,7 @@ function Habits() {
     }
   };
 
-  // ✅ Toggle habit completion
+  // toggle habit completion
   const handleToggleHabit = async (habitId, completed) => {
     try {
       // Find the habit to get its type
@@ -206,7 +206,7 @@ function Habits() {
     }
   };
 
-  // ✅ Delete a habit
+  // Delete a habit
   const handleDeleteHabit = async (habitId) => {
     try {
       await deleteHabit(habitId, token);
