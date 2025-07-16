@@ -20,14 +20,14 @@ router.get("/progress/week", authMiddleware, async (req, res) => {
       GROUP BY day
     `, [userId]);
     
-    console.log("📊 Raw weekly data:", weeklyRows);
+    console.log("Raw weekly data:", weeklyRows);
     
     // Make sure we have data for all days of the week
     const allWeekDays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
     const result = allWeekDays.map(day => {
       const found = weeklyRows.find(row => row.day === day);
       return {
-        day: day.substring(0, 3), // Abbreviate to 'Sun', 'Mon', etc.
+        day: day.substring(0, 3), // Abbreeviate to 'Sun', 'Mon', etc.
         completed: found ? found.completed : 0
       };
     });
@@ -40,10 +40,10 @@ router.get("/progress/week", authMiddleware, async (req, res) => {
   }
 });
 // router.get("/mood", authMiddleware, habitController.getUserMood);
-// ✅ Mark a habit as completed
+// Mark a habit as completed
 router.post("/habits/:id/complete", authMiddleware, markHabitComplete);
 
-// ✅ Add a new habit (with log entry)
+// Add a new habit (with log entry)
 router.post("/add", authMiddleware, async (req, res) => {
   try {
     const { name, goal, type } = req.body;
@@ -55,13 +55,13 @@ router.post("/add", authMiddleware, async (req, res) => {
       return res.status(400).json({ message: "Habit name and goal are required" });
     }
 
-    // ✅ Ensure the type is valid
+    // Ensure the type is valid
     const validTypes = ["daily", "one-time"];
     const habitType = validTypes.includes(type) ? type : "daily"; // Default to "daily" only if type is invalid
 
-    console.log("✅ Processed Habit Type:", habitType); // Debug log
+    console.log("Processed Habit Type:", habitType); // Debug log
 
-    // ✅ Insert new habit
+    // Insert new habit
     const [result] = await db.execute(
       "INSERT INTO habits (user_id, name, goal, type) VALUES (?, ?, ?, ?)",
       [userId, name, goal, habitType]
@@ -69,7 +69,7 @@ router.post("/add", authMiddleware, async (req, res) => {
 
     const habitId = result.insertId; // Get the newly inserted habit's ID
 
-    // ✅ Insert the first entry into habit_logs
+    // Insert the first entry into habit_logs
     await db.execute(
       "INSERT INTO habit_logs (habit_id, user_id, completion_date) VALUES (?, ?, NULL)",
       [habitId, userId]
@@ -82,7 +82,7 @@ router.post("/add", authMiddleware, async (req, res) => {
   }
 });
 
-// ✅ Get all habits for the logged-in user
+// Get all habits for the logged-in user
 router.get("/all", authMiddleware, async (req, res) => {
   try {
     const userId = req.user.id;
@@ -116,7 +116,7 @@ router.get("/all", authMiddleware, async (req, res) => {
   }
 });
 
-// ✅ Update a habit
+// Update a habit
 router.put("/update/:id", authMiddleware, async (req, res) => {
   try {
     const habitId = req.params.id;
@@ -130,11 +130,11 @@ router.put("/update/:id", authMiddleware, async (req, res) => {
 
     console.log("🔹 Received Habit Update Request:", { habitId, completed, type });
 
-    // ✅ Ensure type remains unchanged if not provided
+    // Ensure type remains unchanged if not provided
     const [existingHabit] = await db.execute("SELECT type FROM habits WHERE id = ?", [habitId]);
     const updatedType = type || existingHabit[0].type;
 
-    // ✅ Update `completed` status and `type` in `habits` table
+    // Update `completed` status and `type` in `habits` table
     await db.execute(
       "UPDATE habits SET completed = ?, type = ? WHERE id = ? AND user_id = ?",
       [completed ?? 0, updatedType, habitId, userId]
@@ -145,7 +145,7 @@ router.put("/update/:id", authMiddleware, async (req, res) => {
 
     
 
- // ✅ Update the habit_logs table
+ // Update the habit_logs table
  if (completed) {
   const completionDate = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
   console.log("🔹 Marking habit as complete. Updating habit_logs with:", completionDate);
@@ -171,7 +171,7 @@ router.put("/update/:id", authMiddleware, async (req, res) => {
   }
 });
 
-// ✅ Delete a habit
+// Delete a habit
 router.delete("/delete/:id", authMiddleware, async (req, res) => {
   try {
     const habitId = req.params.id;
