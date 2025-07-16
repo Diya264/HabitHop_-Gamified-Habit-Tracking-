@@ -17,14 +17,13 @@ import FortuneCookie from "./FortuneCookie";
 
 function Dashboard() {
   const [user, setUser] = useState(null);
-  const [activeTab, setActiveTab] = useState("dashboard"); // 🆕 Track current tab
+  const [activeTab, setActiveTab] = useState("dashboard"); // to track current tab
   const navigate = useNavigate();
   const [currentDate, setCurrentDate] = useState("");
   const [habits, setHabits] = useState([]);
   const [earnedBadges, setEarnedBadges] = useState([]);
   const [newBadge, setNewBadge] = useState(null); // State to track newly earned badges
-  const [refreshTrigger, setRefreshTrigger] = useState(0); // Add a refresh trigger state
-  // const [petMood, setPetMood] = useState('happy');
+  const [refreshTrigger, setRefreshTrigger] = useState(0); // adding a refresh trigger state
 
   useEffect(() => {
     const date = new Date();
@@ -82,7 +81,7 @@ function Dashboard() {
     }
   }, [user, refreshTrigger]);
 
-// ✅ Load today's habits from backend
+// Load today's habits from backend
 const loadHabits = () => {
   if (user) {
     const token = localStorage.getItem("token");
@@ -94,7 +93,7 @@ const loadHabits = () => {
       })
       .then((res) => {
         console.log("Habits loaded:", res.data);
-        setHabits(res.data); // ✅ store real habits
+        setHabits(res.data); // store real habitsand not dummy (hardcoded) ones 
       })
       .catch((err) => {
         console.error("Failed to load habits", err);
@@ -146,7 +145,7 @@ useEffect(() => {
       Chart.getChart(ctx).destroy();
     }
 
-    // ✅ Fetch weekly progress data from backend
+    // Fetch weekly progress data from backend
     console.log("Fetching weekly progress data...");
     
     // Function to create the chart with the provided data
@@ -169,7 +168,7 @@ useEffect(() => {
       }
       
       const labels = formattedData.map((d) => d.day);
-      const data = formattedData.map((d) => d.completed || d.count || 0); // Handle both property names
+      const data = formattedData.map((d) => d.completed || d.count || 0); // Handle both property names 
       
       new Chart(ctx, {
         type: 'bar',
@@ -328,7 +327,6 @@ useEffect(() => {
 
   return (
     <div className="dashboard">
-      {/* Sidebar Navigation */}
       <div className="sidebar">
         <div className="logo">
           <span className="logo-icon">🐾</span>
@@ -359,10 +357,6 @@ useEffect(() => {
             <span className="nav-icon">🥠</span>
               <span>Fortune</span>
           </div>
-          {/* <div className={`nav-item ${activeTab === "settings" ? "active" : ""}`} onClick={() => setActiveTab("settings")}>
-            <span className="nav-icon">⚙</span>
-            <span>Settings</span>
-          </div> */}
           <div className="nav-item logout-button" onClick={handleLogout}>
             <span className="nav-icon">🚪</span>
             <span>Logout</span>
@@ -377,16 +371,12 @@ useEffect(() => {
             <div className="header">
               <div>
                 <h1 className="welcome">Welcome, {user.name || user.email}</h1>
-                <p className="date">{currentDate}</p>
-                
-                {/* Debug buttons removed */}
-              </div>
+                <p className="date">{currentDate}</p>          
+               </div>
             </div>
 
             <div className="dashboard-grid">
-              {/* Left Column */}
               <div>
-                {/* Daily Tasks */}
                 <div className="card">
                   <div className="card-header">
                     <h2 className="card-title">Daily Tasks</h2>
@@ -396,7 +386,6 @@ useEffect(() => {
                   </div>
 
                   <div className="progress-circle-container">
-                    {/* Calculate completion percentage */}
                     {(() => {
                       // Use completed_today if available, otherwise fall back to completed
                       const completedCount = habits.filter(h => {
@@ -429,7 +418,7 @@ useEffect(() => {
                   <StreakDisplay />
 
 
-{/* ✅ Render real habits */}
+{/* Render real habits */}
 <div className="habit-list">
   {habits.slice().reverse().slice(0, 4).map((habit) => (
     <div key={habit.id} className="habit-item">
