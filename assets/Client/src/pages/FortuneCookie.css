@@ -15,7 +15,7 @@
   inset: 0;
   background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%);
   overflow: hidden;
-  min-height: 200%;  /* Make it extend beyond the viewport */
+  min-height: 200%; 
   width: 100%;
 }
 
@@ -61,7 +61,7 @@
 .stars-small, .stars-medium, .stars-large {
   position: absolute;
   width: 100%;
-  height: 200%;  /* Make stars extend beyond the viewport */
+  height: 200%; 
   background-repeat: repeat;
   animation: twinkle-stars 1s infinite alternate;
 }
